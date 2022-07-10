@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Script to run cargo inside development container
+#
+# It assumes that Cargo.toml exists in the same directory.
+# .cargo/registry is mounted so as to persist downloaded packages.
+
+IMAGE=rust-lambda-container-example:develop
+
+docker run -it --rm --entrypoint cargo \
+	-v $(pwd):/home/app/src \
+	-v $(pwd)/.cargo/registry:/home/app/.cargo/registry \
+	-w /home/app/src \
+	$IMAGE $@
+
