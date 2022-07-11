@@ -16,6 +16,7 @@ async fn main() -> Result<(), Error> {
     tracing_subscriber::fmt()
         .with_max_level(tracing::Level::INFO)
         .without_time()
+        .with_ansi(false)
         .init();
 
     tracing::info!("Start function_handler");
