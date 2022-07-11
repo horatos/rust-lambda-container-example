@@ -3,7 +3,8 @@ use serde_json::Value as JsonValue;
 use serde_json::json;
 
 async fn function_handler(event: LambdaEvent<JsonValue>) -> Result<JsonValue, Error> {
-    tracing::info!("received event: {:?}", event);
+    tracing::info!("received event payload: {}", serde_json::to_string(&event.payload)?);
+    tracing::info!("received event context: {:?}", event.context);
     let resp = json!({
         "message": "Hello"
     });
