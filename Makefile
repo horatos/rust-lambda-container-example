@@ -7,7 +7,7 @@ PWD:=`pwd`
 
 develop-image:
 	docker build --build-arg UID=${UID} --build-arg GID=${GID} \
-		-t ${IMAGE}:develop .
+		--target develop -t ${IMAGE}:develop .
 
 image:
 	docker build -t ${IMAGE}:latest .
